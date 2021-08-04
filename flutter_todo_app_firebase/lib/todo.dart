@@ -11,6 +11,9 @@ class Todo {
     final Timestamp timestamp = data['createdAt'];
 
     this.createdAt = timestamp.toDate();
+
+    var formatter = new DateFormat('yyyy/MM/dd(E) HH:mm', "ja_JP");
+    var createdAtSt = formatter.format(createdAt); // DateからString
   }
 
   String title;
@@ -18,3 +21,13 @@ class Todo {
   bool isDone = false;
   DocumentReference documentReference;
 }
+
+
+// get sentDateFormatted  {
+//   initializeDateFormatting("ja_JP");
+//
+//   DateTime datetime = DateTime.parse(sentDateJst); // StringからDate
+//
+//   var formatter = new DateFormat('yyyy/MM/dd(E) HH:mm', "ja_JP");
+//   var createdAtSt = formatter.format(datetime); // DateからString
+// }

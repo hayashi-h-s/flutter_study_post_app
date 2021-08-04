@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_todo_app_firebase/screens/components/todo_list_page.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_todo_app_firebase/screens/profile/profile_screen.dart';
 
 void main() async {
   print('Logs print');
@@ -47,7 +48,8 @@ class _HomePageState extends State<HomePage> {
   static List<Widget> _pageList = [
     TodoListPage(),
     CustomPage(pannelColor: Colors.green, title: 'Settings'),
-    CustomPage(pannelColor: Colors.pink, title: 'Search')
+    // CustomPage(pannelColor: Colors.pink, title: 'Search')
+    ProfileScreen()
   ];
 
   void _onItemTapped(int index) {
