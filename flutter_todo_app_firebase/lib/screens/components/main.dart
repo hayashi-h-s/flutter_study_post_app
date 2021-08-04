@@ -1,19 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app_firebase/add/add_page.dart';
-import 'package:flutter_todo_app_firebase/conponents/coustom_bottom_nav_bar.dart';
-import 'package:flutter_todo_app_firebase/main_model.dart';
-import 'package:flutter_todo_app_firebase/screens/components/test_todo_list_body.dart';
-import 'package:flutter_todo_app_firebase/screens/components/todo_card.dart';
-import 'package:flutter_todo_app_firebase/screens/components/todo_list_body.dart';
 import 'package:flutter_todo_app_firebase/screens/components/todo_list_page.dart';
-import 'package:provider/provider.dart';
-
-import '../../add/add_model.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
-
-import '../../enums.dart';
 
 void main() async {
   print('Logs print');
@@ -95,59 +84,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
-//
-// class MainPage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return ChangeNotifierProvider<MainModel>(
-//       create: (_) => MainModel()..getTodoListRealtime(),
-//       child: Scaffold(
-//         appBar: AppBar(
-//           title: Text('TODOアプリ'),
-//           actions: [
-//             Consumer<MainModel>(builder: (context, model, child) {
-//               final isActive = model.checkShouldActiveCompleteButton();
-//               return TextButton(
-//                 onPressed: isActive
-//                     ? () async {
-//                         await model.deleteCheckedItems();
-//                       }
-//                     : null,
-//                 child: Text(
-//                   '完了',
-//                   style: TextStyle(
-//                     color:
-//                         isActive ? Colors.white : Colors.white.withOpacity(0.5),
-//                   ),
-//                 ),
-//               );
-//             })
-//           ],
-//         ),
-//         // body:TestTodoListBody(),
-//         body: TodoListBody(),
-//         floatingActionButton:
-//             Consumer<MainModel>(builder: (context, model, child) {
-//           return FloatingActionButton(
-//             onPressed: () async {
-//               await Navigator.push(
-//                 context,
-//                 MaterialPageRoute(
-//                   builder: (context) => AddPage(model),
-//                   fullscreenDialog: true,
-//                 ),
-//               );
-//             },
-//             child: Icon(Icons.add),
-//           );
-//         }),
-//         bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
-//       ),
-//     );
-//   }
-// }
 
 class CustomPage extends StatelessWidget {
   final Color pannelColor;
