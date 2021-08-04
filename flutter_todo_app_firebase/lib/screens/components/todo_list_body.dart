@@ -14,22 +14,22 @@ class TodoListBody extends StatelessWidget {
     final todoList = model.todoList;
     return Column(
       children: [
-        Container(
-          padding: EdgeInsets.fromLTRB(
-              kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
-          color: kPrimaryColor,
-          child: Row(
-            children: [
-              FillOutlineButton(press: () {}, text: "Recent Message" ),
-              SizedBox(width: kDefaultPadding),
-              FillOutlineButton(
-                press: () {},
-                text: "Active",
-                isFilled: false,
-              ),
-            ],
-          ),
-        ),
+        // Container(
+        //   padding: EdgeInsets.fromLTRB(
+        //       kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
+        //   color: kPrimaryColor,
+        //   child: Row(
+        //     children: [
+        //       FillOutlineButton(press: () {}, text: "Recent Message" ),
+        //       SizedBox(width: kDefaultPadding),
+        //       FillOutlineButton(
+        //         press: () {},
+        //         text: "Active",
+        //         isFilled: false,
+        //       ),
+        //     ],
+        //   ),
+        // ),
         Expanded(
           // https://qiita.com/nannany_hey/items/d4114f615e4d53964121  //RowやColumnの子Widget間の隙間を目一杯埋めたいときに使います
           child: ListView.builder(
