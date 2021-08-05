@@ -1,8 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_app_firebase/screens/SampleAppList/popup_menu_sumple.dart';
 import 'package:flutter_todo_app_firebase/screens/SampleAppList/ui_sample_tab_screen/ui_sample_tab.dart';
 
+import 'bottom_drawer_example.dart';
 import 'conponents/sample_app_list_body.dart';
 
 //
@@ -31,8 +33,8 @@ class _SampleAppListScreenState extends State<SampleAppListScreen> {
 
   static List<Widget> _pageList = [
     UiSampleTabScreen(),
-    CustomPage(pannelColor: Colors.green, title: 'Settings'),
-    CustomPage(pannelColor: Colors.pink, title: 'Search')
+    PoPupMenuScreen(),
+    BottomDrawerExampleScreen()
   ];
 
   void _onItemTapped(int index) {
