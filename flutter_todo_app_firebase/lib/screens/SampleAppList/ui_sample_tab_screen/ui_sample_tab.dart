@@ -2,9 +2,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_app_firebase/screens/SampleAppList/ui_sample_tab_screen/progress_indicator_example.dart';
+import 'package:flutter_todo_app_firebase/screens/components/todo_list_page.dart';
+
+import '../bottom_drawer_example.dart';
+import '../popup_menu_example.dart';
 
 class UiSampleTabScreen extends StatelessWidget {
   const UiSampleTabScreen({Key key}) : super(key: key);
+
+  static List<Widget> _tabPageList = [
+    PoPupMenuScreen(),
+    BottomDrawerExampleScreen(),
+    ProgressIndicatorExampleScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -15,19 +26,21 @@ class UiSampleTabScreen extends StatelessWidget {
           appBar: AppBar(
             bottom: const TabBar(
               tabs: [
-                Tab(icon: Icon(Icons.directions_car)),
-                Tab(icon: Icon(Icons.directions_transit)),
-                Tab(icon: Icon(Icons.directions_bike)),
+                /**
+                 *タブをアイコンにする場合
+                    Tab(icon: Icon(Icons.directions_car)),
+                    Tab(icon: Icon(Icons.directions_transit)),
+                 */
+                Text('PoPupMenu'),
+                Text('BottomDrawer'),
+                Text('ProgressIndicator'),
+                // Text(' ProgressIndicator'),
               ],
             ),
-            title: const Text('Tabs Demo'),
+            title: const Text('サンプルアプリ一覧'),
           ),
-          body: const TabBarView(
-            children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
-            ],
+          body: TabBarView(
+            children: _tabPageList
           ),
         ),
       ),

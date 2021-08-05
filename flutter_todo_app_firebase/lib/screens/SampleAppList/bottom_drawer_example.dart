@@ -11,9 +11,6 @@ class _MyAppState extends State<BottomDrawerExampleScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Bottom drawer example app'),
-        ),
         body: Stack(
           children: [
             Column(
