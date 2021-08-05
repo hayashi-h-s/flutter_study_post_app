@@ -18,6 +18,7 @@ class TodoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+
       onTap: press,
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -26,13 +27,17 @@ class TodoCard extends StatelessWidget {
           children: [
             Stack(
               children: [
+                // /**
+                //  * アイコンの場合
+                //  */
+                // CircleAvatar(
+                //   radius: 24,
+                //   child: Icon(Icons.add),
+                // ),
 
-                /**
-                 * アイコンの場合
-                 */
                 CircleAvatar(
                   radius: 24,
-                  child: Icon(Icons.add),
+                  backgroundImage: NetworkImage('https://wired.jp/app/uploads/2018/01/GettyImages-522585140.webp'),
                 ),
 
                 if (true)
@@ -65,22 +70,22 @@ class TodoCard extends StatelessWidget {
                       style:
                       TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
-                    SizedBox(height: 8),
-                    Opacity(
-                      opacity: 0.64,
-                      child: Text(
-                        todo.title,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
+                    // SizedBox(height: 8),
+                    // Opacity(
+                    //   opacity: 0.64,
+                    //   child: Text(
+                    //     todo.title,
+                    //     maxLines: 1,
+                    //     overflow: TextOverflow.ellipsis,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
             ),
             Opacity(
               opacity: 0.64,
-              child: Text(todo.title),
+              child: Text(todo.createdAtSt),
             ),
           ],
         ),

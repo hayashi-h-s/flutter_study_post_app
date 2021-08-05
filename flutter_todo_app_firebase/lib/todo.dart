@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 
 class Todo {
   Todo(DocumentSnapshot doc) {
@@ -12,22 +13,14 @@ class Todo {
 
     this.createdAt = timestamp.toDate();
 
-    var formatter = new DateFormat('yyyy/MM/dd(E) HH:mm', "ja_JP");
-    var createdAtSt = formatter.format(createdAt); // DateからString
+    // 作成日時をStringに変換
+    DateFormat outputFormat = DateFormat('yyyy-MM-dd');
+    createdAtSt = outputFormat.format(createdAt);
   }
 
   String title;
   DateTime createdAt;
+  String createdAtSt;
   bool isDone = false;
   DocumentReference documentReference;
 }
-
-
-// get sentDateFormatted  {
-//   initializeDateFormatting("ja_JP");
-//
-//   DateTime datetime = DateTime.parse(sentDateJst); // StringからDate
-//
-//   var formatter = new DateFormat('yyyy/MM/dd(E) HH:mm', "ja_JP");
-//   var createdAtSt = formatter.format(datetime); // DateからString
-// }
