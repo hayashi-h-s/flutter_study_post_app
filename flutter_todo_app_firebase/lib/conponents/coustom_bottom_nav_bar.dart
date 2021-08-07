@@ -44,21 +44,17 @@ class CustomBottomNavBar extends StatelessWidget {
                         : Colors.green,
                   ),
                   onPressed: () => {
-                        print('Logs selectedMenu =$selectedMenu')
-
                         // Navigator.pushNamed(context, HomeScreen.routeName),
                       }),
               IconButton(
                 icon: Icon(Icons.home),
                 onPressed: () {
-
-                  print('Logs selectedMenu =$selectedMenu');
                 },
               ),
               IconButton(
                 icon: Icon(Icons.home),
                 onPressed: () {
-                  print('Logs selectedMenu =$selectedMenu');
+
                 },
               ),
               IconButton(
@@ -76,8 +72,6 @@ class CustomBottomNavBar extends StatelessWidget {
                   //       : inActiveIconColor,
                   // ),
                   onPressed: () => {
-                    print('Logs selectedMenu =$selectedMenu')
-
                         // Navigator.pushNamed(context, ProfileScreen.routeName),
                       }),
             ],

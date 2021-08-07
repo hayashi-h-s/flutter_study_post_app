@@ -1,12 +1,17 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app_firebase/add/add_model.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import '../main_model.dart';
 
 class AddPage extends StatelessWidget {
   final MainModel model;
+
   AddPage(this.model);
+
+  final picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +25,28 @@ class AddPage extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
-              children: [
+              children: <Widget>[
+                InkWell(
+                  onTap: () async {
+                    // TODO: カメラロール開いて写真選ぶ
+                    final pickedFile =
+                        await picker.getImage(source: ImageSource.gallery);
+                    // 画像をセットするメソッド
+                    model.setImage(File(pickedFile
+                        .path)); // キャッシュに保存した値をセット pickedFile.path =/data/user/0/com.todoapp.flutter_todo_app_firebase/cache/image_picker7938321804922081782.jpg
+                  },
+                  child: SizedBox(
+                    width: 100,
+                    height: 160,
+                    child:
+                        // 画像があるか否かを判断する三項演算子
+                        model.imageFile != null
+                            ? Image.file(model.imageFile)
+                            : Container(
+                                color: Colors.grey,
+                              ),
+                  ),
+                ),
                 TextField(
                   decoration: InputDecoration(
                     labelText: "追加するTODO",

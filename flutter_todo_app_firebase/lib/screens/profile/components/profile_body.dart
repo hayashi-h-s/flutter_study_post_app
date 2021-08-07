@@ -38,8 +38,6 @@ class ProfileBody extends StatelessWidget {
             text: "Sample App List",
             icon: "assets/icons/Question mark.svg",
             press: () {
-              print('Logs ');
-
               Navigator.push(
                   context,
                   MaterialPageRoute(

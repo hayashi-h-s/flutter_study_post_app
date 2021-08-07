@@ -1,68 +1,68 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_todo_app_firebase/todo.dart';
 
 class MainModel extends ChangeNotifier {
   List<Todo> todoList = [];
+  File imageFile;
   String newTodoText = '';
 
   Future getTodoList() async {
-
-    print('Logs Future getTodoList() async {');
-
     final snapshot =
-    await FirebaseFirestore.instance.collection('todoList').get();
+        await FirebaseFirestore.instance.collection('todoList').get();
     final docs = snapshot.docs;
     final todoList = docs.map((doc) => Todo(doc)).toList();
     this.todoList = todoList;
-
-    print('Logs for (int i = 0; i < this.todoList.length; i++){');
-
-    for (int i = 0; i < this.todoList.length; i++){
-
-      print('Logs this.todoList[i] = $this.todoList[i]');
-    }
-
-
     notifyListeners();
   }
 
   void getTodoListRealtime() {
-
-    print('Logs void getTodoListRealtime() {');
-
     final snapshots =
-    FirebaseFirestore.instance.collection('todoList').snapshots();
-
-    print('Logs snapshots =$snapshots');
-
+        FirebaseFirestore.instance.collection('todoList').snapshots();
     snapshots.listen((snapshot) {
-
-      print('Logs snapshots.listen((snapshot) {');
-
       final docs = snapshot.docs;
       final todoList = docs.map((doc) => Todo(doc)).toList();
       todoList.sort((a, b) => b.createdAt.compareTo(a.createdAt));
       this.todoList = todoList;
       notifyListeners();
-
-      print('Logs for (int i = 0; i < this.todoList.length; i++){');
-
-      for (int i = 0; i < this.todoList.length; i++){
-
-        print('Logs this.todoList[i] = $this.todoList[i]');
-      }
-
-
     });
   }
 
   Future add() async {
     final collection = FirebaseFirestore.instance.collection('todoList');
+
+    final imageURL = await _uploadImageFile();
+
     await collection.add({
       'title': newTodoText,
+      'imageURL': imageURL,
       'createdAt': Timestamp.now(),
     });
+  }
+
+  setImage(File imageFile) {
+    this.imageFile = imageFile;
+    notifyListeners();
+  }
+
+
+  /// FirebaseStorageに画像をuploadするメソッド
+  Future<String> _uploadImageFile() async {
+    // if (imageFile == null) {
+    //   return '';
+    // }
+    // final storage = FirebaseStorage.instance;
+    // final ref = storage.ref().child('books').child(bookTitle);
+    // final snapshot = await ref
+    //     .putFile(
+    //   imageFile,
+    // )
+    //     .onComplete;
+    // final downloadURL = await snapshot.ref.getDownloadURL();
+    // return downloadURL;
+    return 'https://nzigen.com/static/img/article/02.jpg';
   }
 
   void reload() {
@@ -72,7 +72,7 @@ class MainModel extends ChangeNotifier {
   Future deleteCheckedItems() async {
     final checkedItems = todoList.where((todo) => todo.isDone).toList();
     final references =
-    checkedItems.map((todo) => todo.documentReference).toList();
+        checkedItems.map((todo) => todo.documentReference).toList();
 
     final batch = FirebaseFirestore.instance.batch();
 

@@ -35,7 +35,7 @@ dependencies:
   flutter_svg: ^0.22.0 # https://pub.dev/packages/flutter_svg
   intl: ^0.17.0 # タイムスタンプを使用 https://pub.dev/packages/intl/install
   bottom_drawer: ^0.0.3 # https://pub.dev/packages/bottom_drawer
-
+  image_picker: ^0.8.3+1 # https://pub.dev/packages/image_picker 画像ライブラリを選択する
 
 dev_dependencies:
   flutter_test:

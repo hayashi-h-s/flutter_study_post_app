@@ -12,14 +12,7 @@ void main() async {
   await Firebase.initializeApp();
 
   FirebaseAuth auth = FirebaseAuth.instance;
-
-  print('Logs auth = $auth = auth.id = $auth.' );
-
   UserCredential userCredential = await FirebaseAuth.instance.signInAnonymously();
-
-  print('Logs userCredential = $userCredential');
-  print('Logs userCredential = $userCredential');
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 

@@ -8,6 +8,9 @@ class Todo {
     final data = doc.data() as Map<String, Object>;
 
     this.title = data['title'];
+    this.imageURL = data['imageURL'];
+
+    print('Logs imageURL =$imageURL');
 
     final Timestamp timestamp = data['createdAt'];
 
@@ -21,6 +24,7 @@ class Todo {
   String title;
   DateTime createdAt;
   String createdAtSt;
+  String imageURL;
   bool isDone = false;
   DocumentReference documentReference;
 }
