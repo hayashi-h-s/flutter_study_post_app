@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_todo_app_firebase/todo.dart';
@@ -8,6 +9,17 @@ class MainModel extends ChangeNotifier {
   List<Todo> todoList = [];
   File imageFile;
   String newTodoText = '';
+  bool isLoading = false;
+
+  startLoading() {
+    isLoading = true;
+    notifyListeners();
+  }
+
+  endLoading() {
+    isLoading = false;
+    notifyListeners();
+  }
 
   Future getTodoList() async {
     final snapshot =
@@ -47,22 +59,16 @@ class MainModel extends ChangeNotifier {
     notifyListeners();
   }
 
-
   /// FirebaseStorageに画像をuploadするメソッド
   Future<String> _uploadImageFile() async {
-    // if (imageFile == null) {
-    //   return '';
-    // }
-    // final storage = FirebaseStorage.instance;
-    // final ref = storage.ref().child('books').child(bookTitle);
-    // final snapshot = await ref
-    //     .putFile(
-    //   imageFile,
-    // )
-    //     .onComplete;
-    // final downloadURL = await snapshot.ref.getDownloadURL();
-    // return downloadURL;
-    return 'https://nzigen.com/static/img/article/02.jpg';
+    if (imageFile == null) {
+      return '';
+    }
+    final storage = FirebaseStorage.instance;
+    final ref = storage.ref().child('todoList').child(newTodoText);
+    final snapshot = await ref.putFile(imageFile);
+    final downloadURL = await snapshot.ref.getDownloadURL();
+    return downloadURL;
   }
 
   void reload() {

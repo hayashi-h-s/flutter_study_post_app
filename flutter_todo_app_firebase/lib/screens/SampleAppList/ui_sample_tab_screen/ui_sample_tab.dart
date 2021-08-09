@@ -20,14 +20,14 @@ class UiSampleTabScreen extends StatelessWidget {
     ProgressIndicatorExampleScreen(),
     SideMenuDrawerExampleScreen(),
     ButtonSampleListScreen(),
-    PageScrollView(),
+    // PageScrollView(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        length: 6,
+        length: 5,
         child: Scaffold(
           appBar: AppBar(
             bottom: const TabBar(
@@ -42,7 +42,7 @@ class UiSampleTabScreen extends StatelessWidget {
                 Text('ProgressIndicator'),
                 Text('SideMenuDrawerExample'),
                 Text('ButtonSampleListScreen'),
-                Text('PageScrollView'),
+                // Text('PageScrollView'),
                 // Text(' ProgressIndicator'),
               ],
             ),

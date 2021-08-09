@@ -2,12 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app_firebase/screens/components/todo_list_page.dart';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_todo_app_firebase/screens/profile/profile_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
-  print('Logs print');
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 

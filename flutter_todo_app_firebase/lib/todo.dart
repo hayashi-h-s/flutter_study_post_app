@@ -4,18 +4,11 @@ import 'package:intl/intl.dart';
 class Todo {
   Todo(DocumentSnapshot doc) {
     this.documentReference = doc.reference;
-
     final data = doc.data() as Map<String, Object>;
-
     this.title = data['title'];
     this.imageURL = data['imageURL'];
-
-    print('Logs imageURL =$imageURL');
-
     final Timestamp timestamp = data['createdAt'];
-
     this.createdAt = timestamp.toDate();
-
     // 作成日時をStringに変換
     DateFormat outputFormat = DateFormat('yyyy-MM-dd');
     createdAtSt = outputFormat.format(createdAt);
