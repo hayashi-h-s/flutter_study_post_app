@@ -10,7 +10,7 @@ class UserModel extends ChangeNotifier {
     final snapshot =
     await FirebaseFirestore.instance.collection('todoList').get();
     final docs = snapshot.docs;
-    final todoList = docs.map((doc) => Todo(doc)).toList();
+    final todoList = docs.map((doc) => Todo(doc)).toList(); // ここでTodoモデルを作成している
     this.todoList = todoList;
     notifyListeners();
   }

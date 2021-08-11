@@ -14,6 +14,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
+  print('Logs userCredential.user.uid; = $userCredential.user.uid');
+  var currentUser = FirebaseAuth.instance.currentUser;
+
+  if (currentUser != null) {
+    print(currentUser.uid);
+  }
+
   runApp(MyApp());
 }
 
@@ -53,7 +60,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('サンプル1'),
+        title: const Text('投稿一覧'),
       ),
       body: _pageList[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(

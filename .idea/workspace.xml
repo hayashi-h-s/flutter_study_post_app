@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c93b0d6f-eabb-4ac6-ac40-8df2a4f4b919" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/flutter_todo_app_firebase/lib/screens/profile/components/profile_body.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_todo_app_firebase/lib/screens/profile/components/profile_menu.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_todo_app_firebase/lib/screens/profile/components/profile_pic.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_todo_app_firebase/lib/screens/profile/profile_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flutter_todo_app_firebase/lib/screens/components/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_todo_app_firebase/lib/screens/components/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
