@@ -22,17 +22,26 @@ class MainModel extends ChangeNotifier {
   }
 
   Future getTodoList() async {
+    // final snapshot =
+    //     await FirebaseFirestore.instance.collection('todoList').get();
+
     final snapshot =
-        await FirebaseFirestore.instance.collection('todoList').get();
+    await FirebaseFirestore.instance.collectionGroup('todoList').get();
+
     final docs = snapshot.docs;
     final todoList = docs.map((doc) => Todo(doc)).toList();
     this.todoList = todoList;
+
     notifyListeners();
   }
 
   void getTodoListRealtime() {
+    // final snapshots =
+    //     FirebaseFirestore.instance.collection('todoList').snapshots();
+    /// コレクショングループによる取得
     final snapshots =
-        FirebaseFirestore.instance.collection('todoList').snapshots();
+    FirebaseFirestore.instance.collectionGroup('todoList').snapshots();
+
     snapshots.listen((snapshot) {
       final docs = snapshot.docs;
       final todoList = docs.map((doc) => Todo(doc)).toList();

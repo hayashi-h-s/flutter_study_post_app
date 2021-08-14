@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
 
   static List<Widget> _pageList = [
     TodoListPage(),
-    CustomPage(pannelColor: Colors.green, title: 'Settings'),
+    // CustomPage(pannelColor: Colors.green, title: 'Settings'),
     // CustomPage(pannelColor: Colors.pink, title: 'Search')
     ProfileScreen()
   ];
@@ -69,10 +69,10 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.home),
             title: Text('Tweet'),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            title: Text('News'),
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.settings),
+          //   title: Text('News'),
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
             title: Text('MyPage'),

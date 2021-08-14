@@ -31,6 +31,13 @@ class UiSampleTabScreen extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             bottom: const TabBar(
+              isScrollable: true, //タブのスクロール機能 https://www.virment.com/use-scrollable-tabbar-in-flutter/
+              // unselectedLabelColor: Colors.white.withOpacity(0.3),
+              unselectedLabelStyle: TextStyle(fontSize: 12.0),
+              labelColor: Colors.yellowAccent,
+              labelStyle: TextStyle(fontSize: 16.0),
+              indicatorColor: Colors.white,
+              indicatorWeight: 2.0,
               tabs: [
                 /**
                  *タブをアイコンにする場合
