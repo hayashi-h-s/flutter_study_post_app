@@ -7,6 +7,7 @@ import 'package:flutter_todo_app_firebase/screens/SampleAppList/ui_sample_tab_sc
 import 'package:flutter_todo_app_firebase/screens/components/todo_list_page.dart';
 
 import '../bottom_drawer_example.dart';
+import '../future_builder_example_screen.dart';
 import '../popup_menu_example.dart';
 import '../side_menu_drawer_example.dart';
 import 'button_sample_list.dart';
@@ -20,6 +21,7 @@ class UiSampleTabScreen extends StatelessWidget {
     ProgressIndicatorExampleScreen(),
     SideMenuDrawerExampleScreen(),
     ButtonSampleListScreen(),
+    FutureBuilderExampleScreen(), // https://api.flutter.dev/flutter/widgets/FutureBuilder-class.html
     // PageScrollView(),
   ];
 
@@ -27,7 +29,7 @@ class UiSampleTabScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        length: 5,
+        length: 6,
         child: Scaffold(
           appBar: AppBar(
             bottom: const TabBar(
@@ -49,6 +51,7 @@ class UiSampleTabScreen extends StatelessWidget {
                 Text('ProgressIndicator'),
                 Text('SideMenuDrawerExample'),
                 Text('ButtonSampleListScreen'),
+                Text('FutureBuilderExampleScreen'),
                 // Text('PageScrollView'),
                 // Text(' ProgressIndicator'),
               ],
