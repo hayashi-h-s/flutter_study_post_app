@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -45,10 +46,20 @@ class TodoCard extends StatelessWidget {
                 //       ),
                 CircleAvatar(
                   radius: 24,
-                  backgroundImage: NetworkImage(
+                  backgroundImage: CachedNetworkImageProvider(
                     'https://wired.jp/app/uploads/2018/01/GettyImages-522585140.webp',
                   ),
                 ),
+                // NetworkImage(
+                //   'https://wired.jp/app/uploads/2018/01/GettyImages-522585140.webp',
+                // ),
+
+                // CachedNetworkImage(
+                //   imageUrl:  'https://wired.jp/app/uploads/2018/01/GettyImages-522585140.webp',
+                //   placeholder: (context, url) => new CircularProgressIndicator(),
+                //   errorWidget: (context, url, error) => new Icon(Icons.error),
+                // ),
+
                 if (true)
                   Positioned(
                     right: 0,
