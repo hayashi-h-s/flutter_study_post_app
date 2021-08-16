@@ -26,11 +26,53 @@ class ProfilePic extends StatelessWidget {
             fit: StackFit.expand,
             overflow: Overflow.visible,
             children: [
+              Container( /// Stackを使用することで読込中の背景を表示
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(110.0),
+                  child: Container(
+                    /// アイコンの表示
+                    // child: Icon(
+                    //   Icons.supervised_user_circle,
+                    // ),
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
               model.profileImageURL != null
-                  ? CircleAvatar(
-                      radius: 24,
-                      backgroundImage: NetworkImage(model.profileImageURL),
+                  ? Container(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(110.0),
+                        child: Image.network(
+                          model.profileImageURL,
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent loadingProgress) {
+                            if (loadingProgress == null) {
+                              return child;
+                            }
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: null,
+                                // value: loadingProgress.expectedTotalBytes !=
+                                //         null
+                                //     ? loadingProgress.cumulativeBytesLoaded /
+                                //         loadingProgress.expectedTotalBytes
+                                //     : null,
+                                // color: Colors.green , /// インジケータの色を変更
+                                // backgroundColor: Colors.green, /// 背景色
+                              ),
+                            );
+                          },
+                          fit: BoxFit.cover,
+                          /// レイアウトいっぱいに表示
+                        ),
+                      ),
                     )
+                  /// URLから画像を表示する処理
+                  // Image.network(model.profileImageURL)
+                  // CircleAvatar(
+                  //         radius: 24,
+                  //         foregroundImage: Image.network(model.profileImageURL),
+                  //       )
                   : CircleAvatar(
                       radius: 24,
                       backgroundColor: Colors.grey,
