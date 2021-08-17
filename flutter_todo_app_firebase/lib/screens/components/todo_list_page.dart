@@ -36,6 +36,9 @@ class TodoListPage extends StatelessWidget {
         //   ],
         // ),
         // body:TestTodoListBody(),
+        appBar: AppBar(
+          title: Text("投稿一覧"),
+        ),
         body: TodoListBody(),
         floatingActionButton:
             Consumer<MainModel>(builder: (context, model, child) {
