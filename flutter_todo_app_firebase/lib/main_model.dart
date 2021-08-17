@@ -52,13 +52,16 @@ class MainModel extends ChangeNotifier {
   }
 
   Future add() async {
+
+    final userId = FirebaseAuth.instance.currentUser.uid;
     // final collection = FirebaseFirestore.instance.collection('todoList');
     /// userに紐づくtodoListの取得
-    final collection = FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser.uid).collection('todoList');
+    final collection = FirebaseFirestore.instance.collection("users").doc(userId).collection('todoList');
 
     final imageURL = await _uploadImageFile();
 
     await collection.add({
+      'userId': userId,
       'title': newTodoText,
       'imageURL': imageURL,
       'createdAt': Timestamp.now(),
