@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -24,7 +25,6 @@ class MainModel extends ChangeNotifier {
   Future getTodoList() async {
     // final snapshot =
     //     await FirebaseFirestore.instance.collection('todoList').get();
-
     final snapshot =
     await FirebaseFirestore.instance.collectionGroup('todoList').get();
 
@@ -52,7 +52,9 @@ class MainModel extends ChangeNotifier {
   }
 
   Future add() async {
-    final collection = FirebaseFirestore.instance.collection('todoList');
+    // final collection = FirebaseFirestore.instance.collection('todoList');
+    /// userに紐づくtodoListの取得
+    final collection = FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser.uid).collection('todoList');
 
     final imageURL = await _uploadImageFile();
 

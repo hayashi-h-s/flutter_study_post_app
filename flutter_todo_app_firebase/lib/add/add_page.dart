@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import '../main_model.dart';
+import 'add_model.dart';
 
 class AddPage extends StatelessWidget {
   final MainModel model;
