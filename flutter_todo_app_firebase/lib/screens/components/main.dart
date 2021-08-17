@@ -9,17 +9,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  FirebaseAuth auth = FirebaseAuth.instance;
-  UserCredential userCredential = await FirebaseAuth.instance.signInAnonymously();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  print('Logs userCredential.user.uid; = $userCredential.user.uid');
-  var currentUser = FirebaseAuth.instance.currentUser;
-
-  if (currentUser != null) {
-    print(currentUser.uid);
-  }
 
   runApp(MyApp());
 }
