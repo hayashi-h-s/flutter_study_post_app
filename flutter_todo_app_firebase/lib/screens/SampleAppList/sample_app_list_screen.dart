@@ -1,27 +1,9 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app_firebase/screens/SampleAppList/popup_menu_example.dart';
 import 'package:flutter_todo_app_firebase/screens/SampleAppList/ui_sample_tab_screen/ui_sample_tab.dart';
 
 import 'bottom_drawer_example.dart';
-import 'conponents/sample_app_list_body.dart';
-
-//
-// class SampleAppListScreen extends StatelessWidget {
-//   // static String routeName = "/profile";
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("サンプルアップ"),
-//       ),
-//       body: SampleAppListBody(),
-//     );
-//   }
-// }
-//
-
 
 class SampleAppListScreen extends StatefulWidget {
   @override
@@ -34,7 +16,6 @@ class _SampleAppListScreenState extends State<SampleAppListScreen> {
   static List<Widget> _pageList = [
     UiSampleTabScreen(),
     PoPupMenuScreen(),
-    BottomDrawerExampleScreen()
   ];
 
   void _onItemTapped(int index) {
@@ -50,16 +31,12 @@ class _SampleAppListScreenState extends State<SampleAppListScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Tweet'),
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            title: Text('News'),
+            title: Text('機能'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            title: Text('MyPage'),
+            icon: Icon(Icons.screen_lock_portrait),
+            title: Text('画面'),
           ),
         ],
         currentIndex: _selectedIndex,
@@ -100,7 +77,6 @@ class CustomPage extends StatelessWidget {
     );
   }
 }
-
 
 // class SampleAppListScreen extends StatefulWidget {
 //   @override

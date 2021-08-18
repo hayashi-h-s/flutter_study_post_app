@@ -35,7 +35,7 @@ class ProfileBody extends StatelessWidget {
           //   press: () {},
           // ),
           ProfileMenu(
-            text: "Sample App List",
+            text: "サンプルアプリ一覧",
             icon: "assets/icons/Question mark.svg",
             press: () {
               Navigator.push(
@@ -47,7 +47,7 @@ class ProfileBody extends StatelessWidget {
             },
           ),
           ProfileMenu(
-            text: "Log Out",
+            text: "ログアウト",
             icon: "assets/icons/Log out.svg",
             press: () {},
           ),

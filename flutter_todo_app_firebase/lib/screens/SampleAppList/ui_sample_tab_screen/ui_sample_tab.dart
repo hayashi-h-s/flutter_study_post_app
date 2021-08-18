@@ -56,7 +56,7 @@ class UiSampleTabScreen extends StatelessWidget {
                 // Text(' ProgressIndicator'),
               ],
             ),
-            title: const Text('サンプルアプリ一覧'),
+            title: const Text('サンプル一覧'),
           ),
           body: TabBarView(
             children: _tabPageList
