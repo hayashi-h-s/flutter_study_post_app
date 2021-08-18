@@ -4,10 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_todo_app_firebase/screens/profile/user_model.dart';
 import 'package:flutter_todo_app_firebase/todo.dart';
 
-class MainModel extends ChangeNotifier {
+class TodoListPageModel extends ChangeNotifier {
   List<Todo> todoList = [];
+  List<UserModel> users = [];
   File imageFile;
   String newTodoText = '';
   bool isLoading = false;
@@ -26,7 +28,7 @@ class MainModel extends ChangeNotifier {
     // final snapshot =
     //     await FirebaseFirestore.instance.collection('todoList').get();
     final snapshot =
-    await FirebaseFirestore.instance.collectionGroup('todoList').get();
+        await FirebaseFirestore.instance.collectionGroup('todoList').get();
 
     final docs = snapshot.docs;
     final todoList = docs.map((doc) => Todo(doc)).toList();
@@ -35,28 +37,39 @@ class MainModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void getTodoListRealtime() {
+  void getTodoListAndUserListRealtime() {
     // final snapshots =
     //     FirebaseFirestore.instance.collection('todoList').snapshots();
     /// コレクショングループによる取得
-    final snapshots =
-    FirebaseFirestore.instance.collectionGroup('todoList').snapshots();
+    final todoListSnapshots =
+        FirebaseFirestore.instance.collectionGroup('todoList').snapshots();
 
-    snapshots.listen((snapshot) {
+    todoListSnapshots.listen((snapshot) {
       final docs = snapshot.docs;
       final todoList = docs.map((doc) => Todo(doc)).toList();
       todoList.sort((a, b) => b.createdAt.compareTo(a.createdAt));
       this.todoList = todoList;
       notifyListeners();
     });
+
+    final usersSnapshots =
+    FirebaseFirestore.instance.collection('users').snapshots();
+
+    usersSnapshots.listen((snapshot) {
+      final docs = snapshot.docs;
+      final users = docs.map((doc) => UserModel(doc)).toList();
+      this.users = users;
+      notifyListeners();
+    });
   }
 
-  Future add() async {
-
+  Future addPost() async {
     final userId = FirebaseAuth.instance.currentUser.uid;
-    // final collection = FirebaseFirestore.instance.collection('todoList');
     /// userに紐づくtodoListの取得
-    final collection = FirebaseFirestore.instance.collection("users").doc(userId).collection('todoList');
+    final collection = FirebaseFirestore.instance
+        .collection("users")
+        .doc(userId)
+        .collection('todoList');
 
     final imageURL = await _uploadImageFile();
 

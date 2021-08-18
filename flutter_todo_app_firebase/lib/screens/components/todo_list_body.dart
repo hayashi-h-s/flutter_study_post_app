@@ -5,12 +5,12 @@ import 'package:flutter_todo_app_firebase/screens/components/todo_card.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants.dart';
-import '../../main_model.dart';
+import '../../todo_list_page_model.dart';
 import '../../todo.dart';
 
 class TodoListBody extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => Consumer<MainModel>(builder: (context, model, child) {
+  Widget build(BuildContext context) => Consumer<TodoListPageModel>(builder: (context, model, child) {
     final todoList = model.todoList;
     return Column(
       children: [

@@ -18,7 +18,6 @@ class ProfilePic extends StatelessWidget {
       create: (_) => ProfileModel(), // MainModelを再生成している
       child: Consumer<ProfileModel>(builder: (context, model, child) {
         model.getCurrentUser(); // 無駄な処理かも？
-
         return SizedBox(
           height: 115,
           width: 115,
@@ -31,10 +30,9 @@ class ProfilePic extends StatelessWidget {
                   borderRadius: BorderRadius.circular(110.0),
                   child: Container(
                     /// アイコンの表示
-                    // child: Icon(
-                    //   Icons.supervised_user_circle,
-                    // ),
-                    color: Colors.grey,
+                    child: Icon(
+                      Icons.account_circle,
+                    ),
                   ),
                 ),
               ),
@@ -93,23 +91,16 @@ class ProfilePic extends StatelessWidget {
                         final pickedFile =
                             await picker.getImage(source: ImageSource.gallery);
                         // 画像をセットするメソッド
-                        // model.setImage(File(pickedFile.path));
-
-                        print('Logs pickedFile =$pickedFile');
-
-                        model.getCurrentUser(); //テスト用
-
                         if (pickedFile != null) {
                           model.setImage(
                             (File(pickedFile.path)),
                           );
-
-                          // model.startLoading();
-                          await model.add(); // FireStoreに値を追加する
-                          // model.endLoading();
+                          model.startLoading();
+                          await model.addUser(); // FireStoreに値を追加する
+                          model.endLoading();
                         }
                       },
-                      child: Icon(Icons.ac_unit)),
+                      child: Icon(Icons.add)),
                 ),
               )
             ],

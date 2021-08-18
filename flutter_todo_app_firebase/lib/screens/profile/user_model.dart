@@ -5,18 +5,10 @@ class UserModel {
     this.documentReference = doc.reference;
     final data = doc.data() as Map<String, Object>;
     this.imageURL = data['imageURL'];
-    // this.imageURL = data['imageURL'];
-    // final Timestamp timestamp = data['createdAt'];
-    // this.createdAt = timestamp.toDate();
-    // 作成日時をStringに変換
-    // DateFormat outputFormat = DateFormat('yyyy-MM-dd');
-    // createdAtSt = outputFormat.format(createdAt);
+    this.userId = data['userId'];
   }
 
-  // String name;
-  // DateTime createdAt;
-  // String createdAtSt;
   String imageURL;
-  // bool isDone = false;
+  String userId;
   DocumentReference documentReference;
 }

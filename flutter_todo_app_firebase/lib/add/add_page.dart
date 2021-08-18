@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-import '../main_model.dart';
+import '../todo_list_page_model.dart';
 import 'add_model.dart';
 
 class AddPage extends StatelessWidget {
-  final MainModel model;
+  final TodoListPageModel model;
 
   AddPage(this.model);
 
@@ -16,8 +16,8 @@ class AddPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<MainModel>(
-      create: (_) => MainModel(), // MainModelを再生成している
+    return ChangeNotifierProvider<TodoListPageModel>(
+      create: (_) => TodoListPageModel(), // MainModelを再生成している
       child: Stack(
         children: <Widget>[
           Scaffold(
@@ -25,7 +25,7 @@ class AddPage extends StatelessWidget {
             appBar: AppBar(
               title: Text('新規追加'),
             ),
-            body: Consumer<MainModel>(builder: (context, model, child) {
+            body: Consumer<TodoListPageModel>(builder: (context, model, child) {
               return Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -67,7 +67,7 @@ class AddPage extends StatelessWidget {
                       onPressed: () async {
                         model.startLoading();
                         // firestoreに値を追加する
-                        await model.add();
+                        await model.addPost();
                         Navigator.pop(context);
                         model.endLoading();
                       },
@@ -77,7 +77,7 @@ class AddPage extends StatelessWidget {
               );
             }),
           ),
-          Consumer<MainModel>(builder: (context, model, child) {
+          Consumer<TodoListPageModel>(builder: (context, model, child) {
             return model.isLoading
                 ? Container(
                     color: Colors.black.withOpacity(0.3),

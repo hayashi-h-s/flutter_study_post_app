@@ -6,6 +6,7 @@ class Todo {
     this.documentReference = doc.reference;
     final data = doc.data() as Map<String, Object>;
     this.title = data['title'];
+    this.userId = data['userId'];
     this.imageURL = data['imageURL'];
     final Timestamp timestamp = data['createdAt'];
     this.createdAt = timestamp.toDate();
@@ -19,5 +20,6 @@ class Todo {
   String createdAtSt;
   String imageURL;
   bool isDone = false;
+  String userId;
   DocumentReference documentReference;
 }

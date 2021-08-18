@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,21 +6,25 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProfileModel extends ChangeNotifier {
-
   File imageFile;
   String profileImageURL;
+  bool isLoading = false;
 
-  /// ProfileModelにFileを保持するメソッド
+  /// ProfileModelにFileを保持するメソッドs
   setImage(File imageFile) {
     this.imageFile = imageFile;
   }
 
-  Future add() async {
-    final collection = FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser.uid);
+  Future addUser() async {
+    final userId = FirebaseAuth.instance.currentUser.uid;
+
+    final collection =
+        FirebaseFirestore.instance.collection('users').doc(userId);
 
     final imageURL = await _uploadProfileImageFile();
 
     await collection.set({
+      'userId': userId,
       'imageURL': imageURL,
       'createdAt': Timestamp.now(),
     });
@@ -46,14 +49,21 @@ class ProfileModel extends ChangeNotifier {
         .get()
         .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
-        print('Document data: ${documentSnapshot.data()}');
         profileImageURL = documentSnapshot.get("imageURL"); // 特定のコレクションの値を取得
-
-        print('Logs profileImageURL = $profileImageURL');
         notifyListeners();
       } else {
         print('Document does not exist on the database');
       }
     });
+  }
+
+  startLoading() {
+    isLoading = true;
+    notifyListeners();
+  }
+
+  endLoading() {
+    isLoading = false;
+    notifyListeners();
   }
 }

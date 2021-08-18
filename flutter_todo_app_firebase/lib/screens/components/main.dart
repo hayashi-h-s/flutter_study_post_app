@@ -6,12 +6,9 @@ import 'package:flutter_todo_app_firebase/screens/profile/profile_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
 
   runApp(MyApp());
 }
@@ -38,7 +35,6 @@ class _HomePageState extends State<HomePage> {
   static List<Widget> _pageList = [
     TodoListPage(),
     // CustomPage(pannelColor: Colors.green, title: 'Settings'),
-    // CustomPage(pannelColor: Colors.pink, title: 'Search')
     ProfileScreen()
   ];
 
