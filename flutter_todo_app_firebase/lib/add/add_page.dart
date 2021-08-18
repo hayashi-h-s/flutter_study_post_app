@@ -52,8 +52,8 @@ class AddPage extends StatelessWidget {
                     ),
                     TextField(
                       decoration: InputDecoration(
-                        labelText: "追加するTODO",
-                        hintText: "ゴミを出す",
+                        labelText: "投稿",
+                        hintText: "今日は何をしましたか？",
                       ),
                       onChanged: (text) {
                         model.newTodoText = text;
