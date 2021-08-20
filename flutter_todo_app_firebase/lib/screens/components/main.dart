@@ -10,6 +10,8 @@ import 'package:flutter_todo_app_firebase/util/user_util.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  // 匿名ユーザーを作成
+  await FirebaseAuth.instance.signInAnonymously();
   // ユーザー情報が存在しないならユーザーを作成
   UserUtil.createUserNotExist();
   runApp(MyApp());

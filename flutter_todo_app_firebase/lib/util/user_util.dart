@@ -12,11 +12,11 @@ class UserUtil {
   }
 
   /// アプリ起動時にユーザー情報が存在しないならユーザーを作成するメソッド
-  static void createUserNotExist() {
+  static void createUserNotExist() async{
     final userId = FirebaseAuth.instance.currentUser.uid;
     final collection =
         FirebaseFirestore.instance.collection('users').doc(userId);
-    collection.get().then((DocumentSnapshot documentSnapshot) {
+    await collection.get().then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
         // ユーザーが作成済みなら何もしない
       } else
