@@ -13,36 +13,33 @@ class ProfilePic extends StatelessWidget {
   final picker = ImagePicker();
 
   @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ProfileModel>(
-      create: (_) => ProfileModel(), // MainModelを再生成している
-      child: Consumer<ProfileModel>(builder: (context, model, child) {
-        model.getCurrentUser();
-        return SizedBox(
-          height: 115,
-          width: 115,
-          child: Stack(
-            fit: StackFit.expand,
-            overflow: Overflow.visible,
-            children: [
-              Container( /// Stackを使用することで読込中の背景を表示
+  Widget build(BuildContext context) =>
+      Consumer<ProfileModel>(builder: (context, model, child) {
+        final user = model.user;
+        return Container(
+          child: SizedBox(
+            height: 115,
+            width: 115,
+            child: Stack(fit: StackFit.expand, children: [
+              Container(
+                /// Stackを使用することで読込中の背景を表示
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(110.0),
                   child: Container(
                     color: Colors.grey,
-                  //   /// アイコンの表示
-                  //   child: Icon(
-                  //     Icons.account_circle,
-                  //   ),
+                    //   /// アイコンの表示
+                    //   child: Icon(
+                    //     Icons.account_circle,
+                    //   ),
                   ),
                 ),
               ),
-              model.profileImageURL != null
+              user.profileImageURL.isNotEmpty
                   ? Container(
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(110.0),
                         child: Image.network(
-                          model.profileImageURL,
+                          user.profileImageURL,
                           loadingBuilder: (BuildContext context, Widget child,
                               ImageChunkEvent loadingProgress) {
                             if (loadingProgress == null) {
@@ -61,11 +58,13 @@ class ProfilePic extends StatelessWidget {
                               ),
                             );
                           },
-                          fit: BoxFit.cover,
+
                           /// レイアウトいっぱいに表示
+                          fit: BoxFit.cover,
                         ),
                       ),
                     )
+
                   /// URLから画像を表示する処理
                   // Image.network(model.profileImageURL)
                   // CircleAvatar(
@@ -77,37 +76,35 @@ class ProfilePic extends StatelessWidget {
                       backgroundColor: Colors.grey,
                     ),
               Positioned(
-                right: -16,
+                right: 0,
                 bottom: 0,
                 child: SizedBox(
                   height: 46,
                   width: 46,
                   child: FlatButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                        side: BorderSide(color: Colors.white),
-                      ),
-                      color: Color(0xFFF5F6F9),
-                      onPressed: () async {
-                        final pickedFile =
-                            await picker.getImage(source: ImageSource.gallery);
-                        // 画像をセットするメソッド
-                        if (pickedFile != null) {
-                          model.setImage(
-                            (File(pickedFile.path)),
-                          );
-                          model.startLoading();
-                          await model.addUser(); // FireStoreに値を追加する
-                          model.endLoading();
-                        }
-                      },
-                      child: Icon(Icons.add)),
+                    padding: EdgeInsets.zero,
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
+                    onPressed: () async {
+                      final pickedFile =
+                          await picker.getImage(source: ImageSource.gallery);
+                      // 画像をセットするメソッド
+                      if (pickedFile != null) {
+                        model.setImage(
+                          (File(pickedFile.path)),
+                        );
+                        model.startLoading();
+                        await model.addUser(); // FireStoreに値を追加する
+                        model.endLoading();
+                      }
+                    },
+                    child: Icon(Icons.add,color: Colors.black),
+                  ),
                 ),
               )
-            ],
+            ]),
           ),
         );
-      }),
-    );
-  }
+      });
 }

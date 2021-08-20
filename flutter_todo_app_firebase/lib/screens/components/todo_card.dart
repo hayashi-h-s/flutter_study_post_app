@@ -45,11 +45,11 @@ class TodoCard extends StatelessWidget {
                   //   radius: 24,
                   //   child: Icon(Icons.add),
                   // ),
-                  cardUser.imageURL.isNotEmpty // imageURLが''(空)じゃない時に取得した画像を表示
+                  cardUser.profileImageURL.isNotEmpty // imageURLが''(空)じゃない時に取得した画像を表示
                       ? CircleAvatar(
                           radius: 24,
                           backgroundImage: CachedNetworkImageProvider(
-                            cardUser.imageURL,
+                            cardUser.profileImageURL,
                           ),
                           backgroundColor: Colors.blue,
                         )

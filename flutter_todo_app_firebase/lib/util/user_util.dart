@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class UserUtil {
   /// アプリ起動時にユーザー情報が存在しないならユーザーを作成するメソッド
-  static void createUser(DocumentReference collection, String userId) {
+  static void setUserData(DocumentReference collection, String userId) {
     collection.set({
       'userId': userId,
       'imageURL': '',
@@ -20,7 +20,7 @@ class UserUtil {
       if (documentSnapshot.exists) {
         // ユーザーが作成済みなら何もしない
       } else
-        createUser(collection, userId);
+        setUserData(collection, userId);
     });
   }
 }

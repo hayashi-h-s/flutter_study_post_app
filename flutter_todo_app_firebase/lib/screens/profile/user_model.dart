@@ -4,11 +4,11 @@ class UserModel {
   UserModel(DocumentSnapshot doc) {
     this.documentReference = doc.reference;
     final data = doc.data() as Map<String, Object>;
-    this.imageURL = data['imageURL'];
+    this.profileImageURL = data['imageURL'];
     this.userId = data['userId'];
   }
 
-  String imageURL;
+  String profileImageURL;
   String userId;
   DocumentReference documentReference;
 }
