@@ -23,7 +23,7 @@ class TodoListPage extends StatelessWidget {
               await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => AddPage(model),
+                  builder: (context) => AddPostPage(model),
                   fullscreenDialog: true,
                 ),
               );

@@ -7,10 +7,10 @@ import 'package:provider/provider.dart';
 import '../todo_list_page_model.dart';
 import 'add_model.dart';
 
-class AddPage extends StatelessWidget {
+class AddPostPage extends StatelessWidget {
   final TodoListPageModel model;
 
-  AddPage(this.model);
+  AddPostPage(this.model);
 
   final picker = ImagePicker();
 
