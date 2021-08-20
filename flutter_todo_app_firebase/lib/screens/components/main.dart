@@ -38,7 +38,6 @@ class _HomePageState extends State<HomePage> {
 
   static List<Widget> _pageList = [
     TodoListPage(),
-    // CustomPage(pannelColor: Colors.green, title: 'Settings'),
     ProfileScreen()
   ];
 
@@ -55,52 +54,20 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Tweet'),
+            icon: Icon(Icons.article_outlined),
+            title: Text('投稿'),
           ),
           // BottomNavigationBarItem(
           //   icon: Icon(Icons.settings),
           //   title: Text('News'),
           // ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            title: Text('MyPage'),
+            icon: Icon(Icons.settings),
+            title: Text('その他'),
           ),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-      ),
-    );
-  }
-}
-
-class CustomPage extends StatelessWidget {
-  final Color pannelColor;
-  final String title;
-
-  CustomPage({@required this.pannelColor, @required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    final titleTextStyle = Theme.of(context).textTheme.title;
-    return Container(
-      child: Center(
-        child: Container(
-          width: 200,
-          height: 200,
-          decoration: BoxDecoration(
-              color: pannelColor,
-              borderRadius: BorderRadius.all(Radius.circular(20.0))),
-          child: Center(
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: titleTextStyle.fontSize,
-                color: titleTextStyle.color,
-              ),
-            ),
-          ),
-        ),
       ),
     );
   }
