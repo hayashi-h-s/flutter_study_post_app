@@ -17,12 +17,9 @@ class ProfileModel extends ChangeNotifier {
 
   Future addUser() async {
     final userId = FirebaseAuth.instance.currentUser.uid;
-
     final collection =
         FirebaseFirestore.instance.collection('users').doc(userId);
-
     final imageURL = await _uploadProfileImageFile();
-
     await collection.set({
       'userId': userId,
       'imageURL': imageURL,

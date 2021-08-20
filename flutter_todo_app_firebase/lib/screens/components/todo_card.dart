@@ -21,7 +21,6 @@ class TodoCard extends StatelessWidget {
   final VoidCallback press;
 
   @override
-  // Widget build(BuildContext context) {
   Widget build(BuildContext context) =>
       Consumer<TodoListPageModel>(builder: (context, model, child) {
         final users = model.users;

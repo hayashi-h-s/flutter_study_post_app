@@ -17,7 +17,7 @@ class ProfilePic extends StatelessWidget {
     return ChangeNotifierProvider<ProfileModel>(
       create: (_) => ProfileModel(), // MainModelを再生成している
       child: Consumer<ProfileModel>(builder: (context, model, child) {
-        model.getCurrentUser(); // 無駄な処理かも？
+        model.getCurrentUser();
         return SizedBox(
           height: 115,
           width: 115,
@@ -29,10 +29,11 @@ class ProfilePic extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(110.0),
                   child: Container(
-                    /// アイコンの表示
-                    child: Icon(
-                      Icons.account_circle,
-                    ),
+                    color: Colors.grey,
+                  //   /// アイコンの表示
+                  //   child: Icon(
+                  //     Icons.account_circle,
+                  //   ),
                   ),
                 ),
               ),
