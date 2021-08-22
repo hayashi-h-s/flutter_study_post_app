@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app_firebase/conponents/filled_outline_button.dart';
-import 'package:flutter_todo_app_firebase/screens/components/todo_card.dart';
+import 'package:flutter_todo_app_firebase/screens/posts/todo_card.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants.dart';
@@ -10,7 +10,7 @@ import '../../todo.dart';
 
 class TodoListBody extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => Consumer<TodoListPageModel>(builder: (context, model, child) {
+  Widget build(BuildContext context) => Consumer<TodoListScreenModel>(builder: (context, model, child) {
     final todoList = model.todoList;
     return Column(
       children: [

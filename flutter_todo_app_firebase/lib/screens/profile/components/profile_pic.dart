@@ -20,7 +20,8 @@ class ProfilePic extends StatelessWidget {
           child: SizedBox(
             height: 115,
             width: 115,
-            child: Stack(fit: StackFit.expand, children: [
+            child:
+            Stack(fit: StackFit.expand, children: [
               Container(
                 /// Stackを使用することで読込中の背景を表示
                 child: ClipRRect(

@@ -4,20 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-import '../todo_list_page_model.dart';
-import 'add_model.dart';
+import '../../todo_list_page_model.dart';
 
-class AddPostPage extends StatelessWidget {
-  final TodoListPageModel model;
+class AddPostScreen extends StatelessWidget {
+  final TodoListScreenModel model;
 
-  AddPostPage(this.model);
+  AddPostScreen(this.model);
 
   final picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<TodoListPageModel>(
-      create: (_) => TodoListPageModel(), // MainModelを再生成している
+    return ChangeNotifierProvider<TodoListScreenModel>(
+      create: (_) => TodoListScreenModel(), // MainModelを再生成している
       child: Stack(
         children: <Widget>[
           Scaffold(
@@ -25,12 +24,14 @@ class AddPostPage extends StatelessWidget {
             appBar: AppBar(
               title: Text('新規追加'),
             ),
-            body: Consumer<TodoListPageModel>(builder: (context, model, child) {
+            body:
+                Consumer<TodoListScreenModel>(builder: (context, model, child) {
               return Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   children: <Widget>[
-                    InkWell( // https://qiita.com/mkosuke/items/e506256515179d0f421b
+                    InkWell(
+                      // https://qiita.com/mkosuke/items/e506256515179d0f421b
                       onTap: () async {
                         final pickedFile =
                             await picker.getImage(source: ImageSource.gallery);
@@ -77,7 +78,7 @@ class AddPostPage extends StatelessWidget {
               );
             }),
           ),
-          Consumer<TodoListPageModel>(builder: (context, model, child) {
+          Consumer<TodoListScreenModel>(builder: (context, model, child) {
             return model.isLoading
                 ? Container(
                     color: Colors.black.withOpacity(0.3),

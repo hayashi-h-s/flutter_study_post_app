@@ -1,45 +1,49 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app_firebase/screens/components/todo_list_page.dart';
-
+import 'package:flutter_todo_app_firebase/screens/posts/todo_list_page.dart';
 import 'package:flutter_todo_app_firebase/screens/profile/profile_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_todo_app_firebase/screens/register/register_screen.dart';
 import 'package:flutter_todo_app_firebase/util/user_util.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  // 匿名ユーザーを作成
+  // 匿名ユーザーが存在しない場合は作成
   await FirebaseAuth.instance.signInAnonymously();
-  // ユーザー情報が存在しないならユーザーを作成
-  UserUtil.createUserNotExist();
+  await UserUtil.checkUserExist(); // 戻り値がFuture<T>のメソッドはawaitで取得する必要がある
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'TODOアプリ',
-      // home: MainPage(),
-      home: HomePage(),
-    );
+    print('Logs UserUtil.isExistUser = ${UserUtil.isExistUser} ');
+
+    // 未登録ユーザーなら登録画面へ遷移
+    return UserUtil.isExistUser
+        ? MaterialApp(
+            title: 'TODOアプリ',
+            // home: MainPage(),
+            home: TopScreen(),
+          )
+        : MaterialApp(
+            title: 'TODOアプリ',
+            // home: MainPage(),
+            home: RegisterScreen(),
+          );
   }
 }
 
-class HomePage extends StatefulWidget {
+class TopScreen extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _TopScreenState createState() => _TopScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _TopScreenState extends State<TopScreen> {
   int _selectedIndex = 0;
 
-  static List<Widget> _pageList = [
-    TodoListPage(),
-    ProfileScreen()
-  ];
+  static List<Widget> _pageList = [TodoListPage(), ProfileScreen()];
 
   void _onItemTapped(int index) {
     setState(() {

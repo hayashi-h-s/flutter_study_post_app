@@ -22,7 +22,7 @@ class TodoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      Consumer<TodoListPageModel>(builder: (context, model, child) {
+      Consumer<TodoListScreenModel>(builder: (context, model, child) {
         final users = model.users;
         UserModel cardUser;
         for (var user in users) {
