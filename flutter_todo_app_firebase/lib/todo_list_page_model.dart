@@ -1,13 +1,14 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_todo_app_firebase/screens/profile/user_model.dart';
 import 'package:flutter_todo_app_firebase/todo.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class TodoListPageModel extends ChangeNotifier {
+class TodoListScreenModel extends ChangeNotifier {
   List<Todo> todoList = [];
   List<UserModel> users = [];
   File imageFile;
@@ -53,7 +54,7 @@ class TodoListPageModel extends ChangeNotifier {
     });
 
     final usersSnapshots =
-    FirebaseFirestore.instance.collection('users').snapshots();
+        FirebaseFirestore.instance.collection('users').snapshots();
 
     usersSnapshots.listen((snapshot) {
       final docs = snapshot.docs;
@@ -64,7 +65,9 @@ class TodoListPageModel extends ChangeNotifier {
   }
 
   Future addPost() async {
+    if (newTodoText == null) return;
     final userId = FirebaseAuth.instance.currentUser.uid;
+
     /// userに紐づくtodoListの取得
     final collection = FirebaseFirestore.instance
         .collection("users")
@@ -89,6 +92,14 @@ class TodoListPageModel extends ChangeNotifier {
   /// FirebaseStorageに画像をuploadするメソッド
   Future<String> _uploadImageFile() async {
     if (imageFile == null) {
+      Fluttertoast.showToast(
+          msg: "This is Center Short Toast",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
       return '';
     }
     final storage = FirebaseStorage.instance;

@@ -1,16 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_todo_app_firebase/screens/SampleAppList/ui_sample_tab_screen/page_scroll_view.dart';
 import 'package:flutter_todo_app_firebase/screens/SampleAppList/ui_sample_tab_screen/progress_indicator_example.dart';
-import 'package:flutter_todo_app_firebase/screens/components/todo_list_page.dart';
 
-import '../bottom_drawer_example.dart';
-import '../future_builder_example_screen.dart';
-import '../popup_menu_example.dart';
-import '../shared_preferences_example.dart';
-import '../side_menu_drawer_example.dart';
+import 'bottom_drawer_example.dart';
 import 'button_sample_list.dart';
+import 'future_builder_example_screen.dart';
+import 'popup_menu_example.dart';
+import 'shared_preferences_example.dart';
+import 'side_menu_drawer_example.dart';
 
 class UiSampleTabScreen extends StatelessWidget {
   const UiSampleTabScreen({Key key}) : super(key: key);
@@ -46,7 +43,8 @@ class UiSampleTabScreen extends StatelessWidget {
                   fontSize: 16.0,
                 ),
                 labelColor: Colors.white,
-                labelPadding: EdgeInsets.symmetric( // タブ文字にpaddingを設ける処理 https://stackoverflow.com/questions/51239291/how-to-customize-tabbar-width-in-flutter
+                labelPadding: EdgeInsets.symmetric(
+                  // タブ文字にpaddingを設ける処理 https://stackoverflow.com/questions/51239291/how-to-customize-tabbar-width-in-flutter
                   vertical: 10.0,
                   horizontal: 10,
                 ),

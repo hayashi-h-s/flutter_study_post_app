@@ -39,6 +39,7 @@ dependencies:
   image_picker: ^0.8.3+2 # https://pub.dev/packages/image_picker 画像ライブラリを選択する
   cached_network_image: ^3.1.0 #https://pub.dev/packages/cached_network_image
   shared_preferences: ^2.0.6 #https://pub.dev/packages/shared_preferences  サンプル https://flutter.dev/docs/cookbook/persistence/key-value
+  fluttertoast: ^8.0.8 # トーストの表示 https://pub.dev/packages/fluttertoast
 
 dev_dependencies:
   flutter_test:
