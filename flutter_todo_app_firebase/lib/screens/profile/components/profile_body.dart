@@ -50,11 +50,11 @@ class ProfileBody extends StatelessWidget {
                         ));
                   },
                 ),
-                ProfileMenu(
-                  text: "ログアウト",
-                  icon: "assets/icons/Log out.svg",
-                  press: () {},
-                ),
+                // ProfileMenu(
+                //   text: "ログアウト",
+                //   icon: "assets/icons/Log out.svg",
+                //   press: () {},
+                // ),
               ],
             ),
           );

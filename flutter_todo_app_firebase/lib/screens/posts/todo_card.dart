@@ -45,7 +45,8 @@ class TodoCard extends StatelessWidget {
                   //   radius: 24,
                   //   child: Icon(Icons.add),
                   // ),
-                  cardUser.profileImageURL.isNotEmpty // imageURLが''(空)じゃない時に取得した画像を表示
+                  cardUser.profileImageURL
+                          .isNotEmpty // imageURLが''(空)じゃない時に取得した画像を表示
                       ? CircleAvatar(
                           radius: 24,
                           backgroundImage: CachedNetworkImageProvider(
@@ -87,9 +88,18 @@ class TodoCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
+                        cardUser.name,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
                         todo.title,
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
+                          fontSize: 16,
+                          color: Colors.black87,
+                        ),
                       ),
                       if (todo.imageURL.isNotEmpty) // imageURLが''(空)じゃない時に表示
                         Image.network(
@@ -101,31 +111,12 @@ class TodoCard extends StatelessWidget {
                             }
                             return Center(
                               child: CircularProgressIndicator(
-                                // value: loadingProgress.expectedTotalBytes != null
-                                //     ? loadingProgress.cumulativeBytesLoaded /
-                                //     loadingProgress.expectedTotalBytes
-                                //     : null,
                                 value: null,
                                 backgroundColor: Colors.grey,
                               ),
                             );
                           },
                         ),
-
-                      // SizedBox(
-                      //   width: 100,
-                      //   height: 160,
-                      //   child: Container(
-                      //     decoration: BoxDecoration(
-                      //       image: DecorationImage(
-                      //         fit: BoxFit.fill,
-                      //         image: NetworkImage(
-                      //           todo.imageURL,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),
