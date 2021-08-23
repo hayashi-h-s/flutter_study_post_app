@@ -36,19 +36,56 @@ class AddPostScreen extends StatelessWidget {
                         final pickedFile =
                             await picker.getImage(source: ImageSource.gallery);
                         // 画像をセットするメソッド
-                        model.setImage(File(pickedFile
-                            .path)); // キャッシュに保存した値をセット pickedFile.path =/data/user/0/com.todoapp.flutter_todo_app_firebase/cache/image_picker7938321804922081782.jpg
+                        model.setImage(File(
+                          pickedFile.path,
+                        )); // キャッシュに保存した値をセット pickedFile.path =/data/user/0/com.todoapp.flutter_todo_app_firebase/cache/image_picker7938321804922081782.jpg
                       },
                       child: SizedBox(
-                        width: 100,
-                        height: 160,
-                        child:
-                            // 画像があるか否かを判断する三項演算子
-                            model.imageFile != null
-                                ? Image.file(model.imageFile)
-                                : Container(
-                                    color: Colors.grey,
-                                  ),
+                        height: 180,
+                        width: 200,
+                        // double.infinity, // 最大まで広げる h// ttps://flutter.dev/docs/development/ui/layout/constraints
+                        child: Stack(children: [
+                          //fit: StackFit.expand =
+                          Align(
+                            alignment: Alignment.center,
+                            child: SizedBox(
+                              width: 100,
+                              height: 160,
+                              child:
+                                  // 画像があるか否かを判断する三項演算子
+                                  model.imageFile != null
+                                      ? Image.file(model.imageFile)
+                                      : Container(
+                                          color: Colors.grey,
+                                        ),
+                            ),
+                          ),
+                          Positioned(
+                            right: 30,
+                            bottom: 0,
+                            child: SizedBox(
+                              height: 46,
+                              width: 46,
+                              child: FlatButton(
+                                padding: EdgeInsets.zero,
+                                color: Colors.blue,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50)),
+                                onPressed: () async {
+                                  // メソッドをまとめる
+
+                                  final pickedFile = await picker.getImage(
+                                      source: ImageSource.gallery);
+                                  // 画像をセットするメソッド
+                                  model.setImage(File(
+                                    pickedFile.path,
+                                  )); // キャッシュ
+                                },
+                                child: Icon(Icons.add, color: Colors.white),
+                              ),
+                            ),
+                          )
+                        ]),
                       ),
                     ),
                     TextField(

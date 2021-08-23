@@ -6,9 +6,11 @@ class UserModel {
     final data = doc.data() as Map<String, Object>;
     this.profileImageURL = data['imageURL'];
     this.userId = data['userId'];
+    this.name = data['userName'];
   }
 
   String profileImageURL;
   String userId;
+  String name;
   DocumentReference documentReference;
 }

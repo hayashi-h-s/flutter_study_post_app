@@ -20,8 +20,7 @@ class ProfilePic extends StatelessWidget {
           child: SizedBox(
             height: 115,
             width: 115,
-            child:
-            Stack(fit: StackFit.expand, children: [
+            child: Stack(fit: StackFit.expand, children: [
               Container(
                 /// Stackを使用することで読込中の背景を表示
                 child: ClipRRect(
@@ -49,13 +48,6 @@ class ProfilePic extends StatelessWidget {
                             return Center(
                               child: CircularProgressIndicator(
                                 value: null,
-                                // value: loadingProgress.expectedTotalBytes !=
-                                //         null
-                                //     ? loadingProgress.cumulativeBytesLoaded /
-                                //         loadingProgress.expectedTotalBytes
-                                //     : null,
-                                // color: Colors.green , /// インジケータの色を変更
-                                // backgroundColor: Colors.green, /// 背景色
                               ),
                             );
                           },
@@ -65,13 +57,6 @@ class ProfilePic extends StatelessWidget {
                         ),
                       ),
                     )
-
-                  /// URLから画像を表示する処理
-                  // Image.network(model.profileImageURL)
-                  // CircleAvatar(
-                  //         radius: 24,
-                  //         foregroundImage: Image.network(model.profileImageURL),
-                  //       )
                   : CircleAvatar(
                       radius: 24,
                       backgroundColor: Colors.grey,
@@ -100,7 +85,7 @@ class ProfilePic extends StatelessWidget {
                         model.endLoading();
                       }
                     },
-                    child: Icon(Icons.add,color: Colors.black),
+                    child: Icon(Icons.add, color: Colors.black),
                   ),
                 ),
               )
