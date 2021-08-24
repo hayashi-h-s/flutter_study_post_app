@@ -43,14 +43,19 @@ class TodoCard extends StatelessWidget {
           child: InkWell(
             onTap: press,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(children: [
+              padding: const EdgeInsets.only(
+                top: 8,
+                left: 16,
+                right: 16,
+                bottom: 8,
+              ),
+              child: Row(mainAxisSize: MainAxisSize.max, children: [
                 Container(
                   child: Stack(
                     children: [
                       /**
-                         * アイコンの場合
-                         */
+                       * アイコンの場合
+                       */
                       // CircleAvatar(
                       //   radius: 24,
                       //   child: Icon(Icons.add),
@@ -72,6 +77,7 @@ class TodoCard extends StatelessWidget {
                                 // ),
                               ),
                             ),
+                      // TODO ログインアイコン
                       Positioned(
                         right: 0,
                         bottom: 0,
@@ -100,7 +106,7 @@ class TodoCard extends StatelessWidget {
                       children: [
                         if (cardUser?.name?.isNotEmpty)
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 2),
+                            padding: const EdgeInsets.only(),
                             child: Text(
                               cardUser?.name,
                               style: TextStyle(
@@ -120,7 +126,10 @@ class TodoCard extends StatelessWidget {
                         if (todo
                             ?.imageURL?.isNotEmpty) // imageURLが''(空)じゃない時に表示
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 4),
+                            padding: const EdgeInsets.only(
+                              top: 4,
+                              bottom: 4,
+                            ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(12.0),
                               child: Image.network(
@@ -146,7 +155,7 @@ class TodoCard extends StatelessWidget {
                   ),
                 ),
                 Opacity(
-                  opacity: 0.64,
+                  opacity: 0.84,
                   child: Text(
                     todo.createdAtSt,
                     style: TextStyle(fontSize: 12),
