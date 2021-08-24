@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_app_firebase/util/toast_util.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -108,6 +109,7 @@ class AddPostScreen extends StatelessWidget {
                         await model.addPost();
                         Navigator.pop(context);
                         model.endLoading();
+                        ToastUtil.showToastText("投稿が完了しました");
                       },
                     ),
                   ],

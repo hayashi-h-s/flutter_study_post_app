@@ -18,16 +18,16 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print('Logs UserUtil.isExistUser = ${UserUtil.isExistUser} ');
-
     // 未登録ユーザーなら登録画面へ遷移
     return UserUtil.isExistUser
         ? MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'TODOアプリ',
             // home: MainPage(),
             home: TopScreen(),
           )
         : MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'TODOアプリ',
             // home: MainPage(),
             home: RegisterScreen(),

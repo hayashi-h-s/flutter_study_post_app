@@ -13,6 +13,7 @@ class TodoListPage extends StatelessWidget {
       create: (_) => TodoListScreenModel()..getTodoListAndUserListRealtime(),
       child: Scaffold(
         appBar: AppBar(
+          // centerTitle: true, // 中央寄せ https://qiita.com/pikatyu3/items/59fbc3cf8eb1b4c89310
           title: Text("投稿一覧"),
         ),
         body: TodoListBody(),

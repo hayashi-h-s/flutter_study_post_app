@@ -6,7 +6,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app_firebase/screens/profile/user_model.dart';
 import 'package:flutter_todo_app_firebase/todo.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class TodoListScreenModel extends ChangeNotifier {
   List<Todo> todoList = [];
@@ -92,14 +91,6 @@ class TodoListScreenModel extends ChangeNotifier {
   /// FirebaseStorageに画像をuploadするメソッド
   Future<String> _uploadImageFile() async {
     if (imageFile == null) {
-      Fluttertoast.showToast(
-          msg: "This is Center Short Toast",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
       return '';
     }
     final storage = FirebaseStorage.instance;
