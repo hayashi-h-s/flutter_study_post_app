@@ -17,7 +17,7 @@ class ProfileBody extends StatelessWidget {
             child: Column(
               children: [
                 ProfilePic(),
-                SizedBox(height: 20),
+                // SizedBox(height: 10),
                 // ProfileMenu(
                 //   text: "My Account",
                 //   icon: "assets/icons/User Icon.svg",

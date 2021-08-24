@@ -16,17 +16,20 @@ class ProfileModel extends ChangeNotifier {
     this.imageFile = imageFile;
   }
 
-  Future addUser() async {
+  Future addUserImage() async {
+    // ドキュメントの更新 https://firebase.flutter.dev/docs/firestore/usage/#updating-documents
     final userId = FirebaseAuth.instance.currentUser.uid;
-    final collection =
-        FirebaseFirestore.instance.collection('users').doc(userId);
     final imageURL = await _uploadProfileImageFile();
-    await collection.set({
-      'userId': userId,
-      'imageURL': imageURL,
-      'createdAt': Timestamp.now(),
-    });
-    notifyListeners();
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+    users
+        .doc(userId)
+        .update({'imageURL': imageURL})
+        .then((value) => {
+              notifyListeners(),
+            })
+        .catchError(
+          (error) => {print("Failed to update user: $error")},
+        );
   }
 
   /// FirebaseStorageに画像をuploadするメソッド

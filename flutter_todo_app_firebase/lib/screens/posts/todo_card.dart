@@ -87,21 +87,23 @@ class TodoCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        cardUser.name,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                      if (cardUser?.name?.isNotEmpty)
+                        Text(
+                          cardUser?.name,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text(
-                        todo.title,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black87,
+                      if (todo?.title?.isNotEmpty)
+                        Text(
+                          todo?.title,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black87,
+                          ),
                         ),
-                      ),
-                      if (todo.imageURL.isNotEmpty) // imageURLが''(空)じゃない時に表示
+                      if (todo?.imageURL?.isNotEmpty) // imageURLが''(空)じゃない時に表示
                         Image.network(
                           todo.imageURL,
                           loadingBuilder: (BuildContext context, Widget child,
