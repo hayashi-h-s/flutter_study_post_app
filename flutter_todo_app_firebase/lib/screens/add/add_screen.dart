@@ -23,7 +23,7 @@ class AddPostScreen extends StatelessWidget {
           Scaffold(
             resizeToAvoidBottomInset: false, //
             appBar: AppBar(
-              title: Text('新規追加'),
+              title: Text('新規投稿'),
             ),
             body:
                 Consumer<TodoListScreenModel>(builder: (context, model, child) {
@@ -95,23 +95,53 @@ class AddPostScreen extends StatelessWidget {
                         hintText: "今日は何をしましたか？",
                       ),
                       onChanged: (text) {
-                        model.newTodoText = text;
+                        // model.newPostText = text;
+                        model.setPostText(text);
                       },
                     ),
                     SizedBox(
                       height: 16,
                     ),
-                    ElevatedButton(
-                      child: Text('追加する'),
-                      onPressed: () async {
-                        model.startLoading();
-                        // firestoreに値を追加する
-                        await model.addPost();
-                        Navigator.pop(context);
-                        model.endLoading();
-                        ToastUtil.showToastText("投稿が完了しました");
-                      },
-                    ),
+                    Consumer<TodoListScreenModel>(
+                        builder: (context, model, child) {
+                      return (model.newPostText.length > 0 ||
+                              (model.imageFile != null))
+                          ? ElevatedButton(
+                              child: Text('投稿'),
+                              onPressed: () async {
+                                if ((model.newPostText == null ||
+                                        model.newPostText.isEmpty) &&
+                                    (model.imageFile == null)) {
+                                  ToastUtil.showToastText(
+                                    "文字か画像のどちらかは入力してください。",
+                                  );
+                                  return;
+                                }
+                                model.startLoading();
+                                // Firestoreに値を追加する
+                                await model.addPost();
+                                Navigator.pop(context);
+                                model.endLoading();
+                                ToastUtil.showToastText("投稿が完了しました");
+                              },
+                            )
+                          : ElevatedButton(
+                              child: Text('投稿'),
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.grey,
+                                onPrimary: Colors.white,
+                              ),
+                              onPressed: () async {
+                                if ((model.newPostText == null ||
+                                        model.newPostText.isEmpty) &&
+                                    (model.imageFile == null)) {
+                                  ToastUtil.showToastText(
+                                      "文字か画像のどちらかは入力してください");
+                                  return;
+                                }
+                              },
+                            );
+                    }),
                   ],
                 ),
               );

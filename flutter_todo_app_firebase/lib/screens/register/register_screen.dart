@@ -129,8 +129,6 @@ class RegisterScreen extends StatelessWidget {
             }),
           ),
           Consumer<RegisterScreenModel>(builder: (context, model, child) {
-            print('Logs   model.isLoading = ${model.isLoading} ');
-
             return model.isLoading
                 ? Container(
                     color: Colors.black.withOpacity(0.3),
