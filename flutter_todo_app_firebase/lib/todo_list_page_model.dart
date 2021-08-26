@@ -11,7 +11,7 @@ class TodoListScreenModel extends ChangeNotifier {
   List<Todo> todoList = [];
   List<UserModel> users = [];
   File imageFile;
-  String newTodoText = '';
+  String newPostText = '';
   bool isLoading = false;
 
   startLoading() {
@@ -64,7 +64,7 @@ class TodoListScreenModel extends ChangeNotifier {
   }
 
   Future addPost() async {
-    if (newTodoText == null) return;
+    if (newPostText == null) return;
     final userId = FirebaseAuth.instance.currentUser.uid;
 
     /// userに紐づくtodoListの取得
@@ -77,7 +77,7 @@ class TodoListScreenModel extends ChangeNotifier {
 
     await collection.add({
       'userId': userId,
-      'title': newTodoText,
+      'title': newPostText,
       'imageURL': imageURL,
       'createdAt': Timestamp.now(),
     });
@@ -94,7 +94,7 @@ class TodoListScreenModel extends ChangeNotifier {
       return '';
     }
     final storage = FirebaseStorage.instance;
-    final ref = storage.ref().child('todoList').child(newTodoText);
+    final ref = storage.ref().child('todoList').child(newPostText);
     final snapshot = await ref.putFile(imageFile);
     final downloadURL = await snapshot.ref.getDownloadURL();
     return downloadURL;
@@ -120,5 +120,10 @@ class TodoListScreenModel extends ChangeNotifier {
   bool checkShouldActiveCompleteButton() {
     final checkedItems = todoList.where((todo) => todo.isDone).toList();
     return checkedItems.length > 0;
+  }
+
+  setPostText(String newPostText) {
+    this.newPostText = newPostText;
+    notifyListeners(); // これによって変化を動的に反映できる
   }
 }
