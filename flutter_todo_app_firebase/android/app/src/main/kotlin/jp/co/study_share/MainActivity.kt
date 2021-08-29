@@ -1,4 +1,4 @@
-package com.todoapp.flutter_todo_app_firebase
+package jp.co.study_share
 
 import io.flutter.embedding.android.FlutterActivity
 
