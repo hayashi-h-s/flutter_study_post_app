@@ -41,8 +41,5 @@ etc......
 
 ![Screenshot_2021-11-15-10-00-04-091_com todoapp flutter_todo_app_firebase](https://user-images.githubusercontent.com/49052894/141707079-f4380a3e-b5c6-4b5f-9f73-91018738a14f.jpg
 
-![Screenshot_2021-11-15-09-55-26-113_com todoapp flutter_todo_app_firebase](https://user-images.githubusercontent.com/49052894/141707091-b9460cf8-95ac-4d04-ab2a-5cf33264ccbc.jpg)
-)
-
 ![sample_app_screen_image](https://user-images.githubusercontent.com/49052894/130783540-8e7104c5-f1d4-4f71-9ee5-9501faa1bbd1.png)
 
