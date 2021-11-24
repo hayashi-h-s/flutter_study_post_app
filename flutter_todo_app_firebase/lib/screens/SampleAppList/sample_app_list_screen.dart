@@ -52,7 +52,7 @@ class CustomPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final titleTextStyle = Theme.of(context).textTheme.title;
+    final titleTextStyle = Theme.of(context).textTheme.bodyText1;
     return Container(
       child: Center(
         child: Container(
