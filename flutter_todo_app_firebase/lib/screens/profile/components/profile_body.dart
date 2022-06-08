@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app_firebase/screens/SampleAppList/sample_app_list_screen.dart';
 import 'package:flutter_todo_app_firebase/screens/profile/profile_model.dart';
+import 'package:flutter_todo_app_firebase/screens/register/aaccount_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'profile_menu.dart';
@@ -17,27 +18,18 @@ class ProfileBody extends StatelessWidget {
             child: Column(
               children: [
                 ProfilePic(),
-                // SizedBox(height: 10),
-                // ProfileMenu(
-                //   text: "My Account",
-                //   icon: "assets/icons/User Icon.svg",
-                //   press: () => {},
-                // ),
-                // ProfileMenu(
-                //   text: "Notifications",
-                //   icon: "assets/icons/Bell.svg",
-                //   press: () {},
-                // ),
-                // ProfileMenu(
-                //   text: "Settings",
-                //   icon: "assets/icons/Settings.svg",
-                //   press: () {},
-                // ),
-                // ProfileMenu(
-                //   text: "Help Center",
-                //   icon: "assets/icons/Question mark.svg",
-                //   press: () {},
-                // ),
+                ProfileMenu(
+                  text: "アカウント",
+                  icon: "assets/icons/Question mark.svg",
+                  press: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AccountScreen(),
+                          fullscreenDialog: true,
+                        ));
+                  },
+                ),
                 ProfileMenu(
                   text: "サンプルアプリ一覧",
                   icon: "assets/icons/Question mark.svg",
@@ -50,11 +42,11 @@ class ProfileBody extends StatelessWidget {
                         ));
                   },
                 ),
-                // ProfileMenu(
-                //   text: "ログアウト",
-                //   icon: "assets/icons/Log out.svg",
-                //   press: () {},
-                // ),
+                ProfileMenu(
+                  text: "ログアウト",
+                  icon: "assets/icons/Log out.svg",
+                  press: () {},
+                ),
               ],
             ),
           );
