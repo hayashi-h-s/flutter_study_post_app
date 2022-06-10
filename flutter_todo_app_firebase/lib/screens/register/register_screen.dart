@@ -20,6 +20,7 @@ class RegisterScreen extends StatelessWidget {
           Scaffold(
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
+              centerTitle: true,
               title: Text('ユーザー登録'),
             ),
             body:

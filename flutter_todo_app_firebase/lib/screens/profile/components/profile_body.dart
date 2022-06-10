@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app_firebase/screens/SampleAppList/sample_app_list_screen.dart';
 import 'package:flutter_todo_app_firebase/screens/profile/profile_model.dart';
-import 'package:flutter_todo_app_firebase/screens/register/aaccount_screen.dart';
+import 'package:flutter_todo_app_firebase/screens/register/register_screen.dart';
+import 'package:flutter_todo_app_firebase/screens/start_up/start_page.dart';
 import 'package:provider/provider.dart';
-
 import 'profile_menu.dart';
 import 'profile_pic.dart';
 
@@ -25,7 +25,7 @@ class ProfileBody extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => AccountScreen(),
+                          builder: (context) => LoginPage(),
                           fullscreenDialog: true,
                         ));
                   },
