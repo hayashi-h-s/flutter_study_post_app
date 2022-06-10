@@ -5,10 +5,10 @@ import 'package:flutter_todo_app_firebase/util/toast_util.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-import '../../todo_list_page_model.dart';
+import '../posts/todo_list_page_model.dart';
 
 class AddPostScreen extends StatelessWidget {
-  final TodoListScreenModel model;
+  final PostsScreenModel model;
 
   AddPostScreen(this.model);
 
@@ -16,8 +16,8 @@ class AddPostScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<TodoListScreenModel>(
-      create: (_) => TodoListScreenModel(), // MainModelを再生成している
+    return ChangeNotifierProvider<PostsScreenModel>(
+      create: (_) => PostsScreenModel(), // MainModelを再生成している
       child: Stack(
         children: <Widget>[
           Scaffold(
@@ -26,7 +26,7 @@ class AddPostScreen extends StatelessWidget {
               title: Text('新規投稿'),
             ),
             body:
-                Consumer<TodoListScreenModel>(builder: (context, model, child) {
+                Consumer<PostsScreenModel>(builder: (context, model, child) {
               return Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -102,7 +102,7 @@ class AddPostScreen extends StatelessWidget {
                     SizedBox(
                       height: 16,
                     ),
-                    Consumer<TodoListScreenModel>(
+                    Consumer<PostsScreenModel>(
                         builder: (context, model, child) {
                       return (model.newPostText.length > 0 ||
                               (model.imageFile != null))
@@ -147,7 +147,7 @@ class AddPostScreen extends StatelessWidget {
               );
             }),
           ),
-          Consumer<TodoListScreenModel>(builder: (context, model, child) {
+          Consumer<PostsScreenModel>(builder: (context, model, child) {
             return model.isLoading
                 ? Container(
                     color: Colors.black.withOpacity(0.3),

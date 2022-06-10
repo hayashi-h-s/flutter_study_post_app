@@ -3,26 +3,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_todo_app_firebase/screens/profile/user_model.dart';
-import 'package:flutter_todo_app_firebase/todo_list_page_model.dart';
+import 'package:flutter_todo_app_firebase/screens/posts/todo_list_page_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants.dart';
-import '../../todo.dart';
+import '../../post.dart';
 
-class TodoCard extends StatelessWidget {
-  const TodoCard({
+class PostCard extends StatelessWidget {
+  const PostCard({
     Key key,
     this.todo,
     this.press,
   }) : super(key: key);
 
-  final Todo todo;
+  final Post todo;
 
   final VoidCallback press;
 
   @override
   Widget build(BuildContext context) =>
-      Consumer<TodoListScreenModel>(builder: (context, model, child) {
+      Consumer<PostsScreenModel>(builder: (context, model, child) {
         final users = model.users;
         UserModel cardUser;
         for (var user in users) {

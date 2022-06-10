@@ -5,10 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app_firebase/screens/profile/user_model.dart';
-import 'package:flutter_todo_app_firebase/todo.dart';
+import 'package:flutter_todo_app_firebase/post.dart';
 
-class TodoListScreenModel extends ChangeNotifier {
-  List<Todo> todoList = [];
+class PostsScreenModel extends ChangeNotifier {
+  List<Post> todoList = [];
   List<UserModel> users = [];
   File imageFile;
   String newPostText = '';
@@ -31,7 +31,7 @@ class TodoListScreenModel extends ChangeNotifier {
         await FirebaseFirestore.instance.collectionGroup('todoList').get();
 
     final docs = snapshot.docs;
-    final todoList = docs.map((doc) => Todo(doc)).toList();
+    final todoList = docs.map((doc) => Post(doc)).toList();
     this.todoList = todoList;
 
     notifyListeners();
@@ -46,7 +46,7 @@ class TodoListScreenModel extends ChangeNotifier {
 
     todoListSnapshots.listen((snapshot) {
       final docs = snapshot.docs;
-      final todoList = docs.map((doc) => Todo(doc)).toList();
+      final todoList = docs.map((doc) => Post(doc)).toList();
       todoList.sort((a, b) => b.createdAt.compareTo(a.createdAt));
       this.todoList = todoList;
       notifyListeners();

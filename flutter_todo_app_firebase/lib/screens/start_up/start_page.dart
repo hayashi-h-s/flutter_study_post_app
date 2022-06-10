@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app_firebase/screens/posts/todo_list_page.dart';
+import 'package:flutter_todo_app_firebase/screens/posts/posts_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key key}) : super(key: key);
@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             ElevatedButton(onPressed: () {
               // pushReplacementで画面を
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>TodoListPage()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>PostsPage()));
             }, child: Text("emailログイン"))
           ],
         ),

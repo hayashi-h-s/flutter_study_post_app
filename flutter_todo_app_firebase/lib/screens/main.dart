@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app_firebase/screens/posts/todo_list_page.dart';
+import 'package:flutter_todo_app_firebase/screens/posts/posts_page.dart';
 import 'package:flutter_todo_app_firebase/screens/profile/profile_screen.dart';
 import 'package:flutter_todo_app_firebase/screens/register/register_screen.dart';
 import 'package:flutter_todo_app_firebase/util/user_util.dart';
@@ -43,7 +43,7 @@ class TopScreen extends StatefulWidget {
 class _TopScreenState extends State<TopScreen> {
   int _selectedIndex = 0;
 
-  static List<Widget> _pageList = [TodoListPage(), ProfileScreen()];
+  static List<Widget> _pageList = [PostsPage(), ProfileScreen()];
 
   void _onItemTapped(int index) {
     setState(() {

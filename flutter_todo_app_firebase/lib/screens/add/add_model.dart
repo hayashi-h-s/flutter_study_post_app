@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_todo_app_firebase/todo.dart';
+import 'package:flutter_todo_app_firebase/post.dart';
 
 class AddModel extends ChangeNotifier {
   String todoText = '';

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 
-class Todo {
-  Todo(DocumentSnapshot doc) {
+class Post {
+  Post(DocumentSnapshot doc) {
     this.documentReference = doc.reference;
     final data = doc.data() as Map<String, Object>;
     this.title = data['title'];
