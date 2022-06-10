@@ -1,11 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_app_firebase/screens/posts/posts_page_model.dart';
 import 'package:flutter_todo_app_firebase/util/toast_util.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-
-import '../posts/todo_list_page_model.dart';
 
 class AddPostScreen extends StatelessWidget {
   final PostsScreenModel model;

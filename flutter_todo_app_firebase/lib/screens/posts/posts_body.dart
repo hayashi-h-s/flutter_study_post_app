@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app_firebase/conponents/filled_outline_button.dart';
 import 'package:flutter_todo_app_firebase/screens/posts/post_card.dart';
+import 'package:flutter_todo_app_firebase/screens/posts/posts_page_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants.dart';
-import 'todo_list_page_model.dart';
 import '../../post.dart';
 
 class PostsBody extends StatelessWidget {
