@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app_firebase/screens/posts/posts_page.dart';
+import 'package:flutter_todo_app_firebase/screens/start_up/create_account.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key key}) : super(key: key);
@@ -55,16 +56,23 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(color: Colors.blue),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      print("アカウント作成");
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CreateAccountPage(),
+                          ));
                     })
             ])),
             SizedBox(
               height: 70,
             ),
-            ElevatedButton(onPressed: () {
-              // pushReplacementで画面を
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>PostsPage()));
-            }, child: Text("emailログイン"))
+            ElevatedButton(
+                onPressed: () {
+                  // pushReplacementで画面を
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => PostsPage()));
+                },
+                child: Text("emailログイン"))
           ],
         ),
       )),

@@ -38,7 +38,6 @@ class ProfileBody extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => SampleAppListScreen(),
-                          fullscreenDialog: true,
                         ));
                   },
                 ),
